@@ -1,6 +1,3 @@
-
- 
-
 const currentNumber = document.querySelector('.currentNumber');
 
 const previousNumber = document.querySelector('.previousNumber p');
@@ -19,13 +16,7 @@ const calculatorHistory = document.querySelector('.history');
 
 const historyBtn = document.querySelector('.history-btn');
 
-
 let result = '';
-
-
-
-
-
 
 function displayNumbers () {
         if(this.textContent === '.' && currentNumber.innerHTML.includes('.')) return;
@@ -33,9 +24,6 @@ function displayNumbers () {
 
         currentNumber.innerHTML += this.textContent;
 }
-
-
-
 
 function operate () {
     if(currentNumber.innerHTML === '' && this.textContent ==='-'){
@@ -56,17 +44,12 @@ function operate () {
      currentNumber.innerHTML ='';
 }
 
-
-
-
-
 function showResult () {
     if(previousNumber.innerHTML === '' || currentNumber.innerHTML === '') return;
 
     let a = Number(currentNumber.innerHTML);
     let b = Number(previousNumber.innerHTML);
     let operator = mathSign.innerHTML;
-
 
     switch(operator) {
         case '+':
@@ -110,34 +93,21 @@ function clearHistory () {
 }
 
 
-
 function clearScreen () {
     result = '';
     currentNumber.innerHTML = '';
     previousNumber.innerHTML = '';
     mathSign.innerHTML = '';
-
 }
 
+operatorsButtons.forEach((button) => button.addEventListener('click', operate))
 
+equalsButton.addEventListener('click', showResult);
 
+clearButton.addEventListener('click', clearScreen);
 
-
-
-
-
- // Nasluchiwanie przyciskow
-
- operatorsButtons.forEach((button) => button.addEventListener('click', operate))
-
- equalsButton.addEventListener('click', showResult);
-
-
- clearButton.addEventListener('click', clearScreen);
-
- numbersButtons.forEach((button) => {
+numbersButtons.forEach((button) => {
      button.addEventListener('click', displayNumbers)
- })
+})
 
-
- historyBtn.addEventListener('click', clearHistory);
+historyBtn.addEventListener('click', clearHistory);
